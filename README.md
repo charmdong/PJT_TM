@@ -51,7 +51,9 @@
     <tr>
       <td>07/26 SUN</td>
       <td>
-        1.
+        1. 공통 코드 테이블 생성<br/>
+        2. MyBatis 설정<br/>
+        3. DAO 및 .xml 생성
       </td>
     </tr>
   </tbody>
