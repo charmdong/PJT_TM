@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.donggun.tm.dao.UserDAO">
+	<!-- SELECT -->
+	<select id="searchUser" parameterType="String" resultType="User">
+		SELECT		id
+					, password
+					, name
+					, birth
+					, phone
+					, email
+					, club_code
+					, ntrp
+					, avg_eval_grade
+		FROM		USER
+		WHERE		id = #{id}
+	</select>
+	
+	<select id="searchAllUser" parameterType="User" resultType="User">
+		SELECT		id
+					, password
+					, name
+					, birth
+					, phone
+					, email
+					, club_code
+					, ntrp
+					, avg_eval_grade
+		FROM		USER	
+	</select>
+	
+	<select id="userLogin" parameterType="String" resultType="User">
+		SELECT		id
+					, password
+					, name
+					, birth
+					, phone
+					, email
+					, club_code
+					, ntrp
+					, avg_eval_grade
+		FROM		USER
+		WHERE		1=1
+		AND			id = #{id}
+		AND			password = #{password}
+	</select>
+	
+	<!-- INSERT -->
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO	USER
+		VALUES	(
+					#{id}
+					, #{password}
+					, #{name}
+					, #{birth}
+					, #{phone}
+					, #{email}
+					, #{club_code}
+					, #{ntrp}
+		) 
+	</insert>
+	
+	<!-- UPDATE -->
+	<update id="updateUser" parameterType="User">
+		UPDATE	USER
+		SET		password = #{password}
+				, name = #{name}
+				, birth = #{birth}
+				, phone = #{phone}
+				, email = #{email}
+				, club_code = #{club_code}
+				, ntrp = #{ntrp}
+		WHERE	id = #{id}
+	</update>
+	
+	<!-- DELETE -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE
+		FROM	USER
+		WHERE	id = #{id}
+	</delete>
+</mapper>
