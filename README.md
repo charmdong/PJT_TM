@@ -14,13 +14,15 @@
       <td>07/27 MON</td>
       <td>
         1. TABLE DATE type to DATETIME<br/>
-        2. main, login page - jsp
+        2. main, login page - jsp<br/>
+        3. Controller 구현
       </td>
     </tr>
     <tr>
       <td>07/28 TUE</td>
       <td>
-        1. 
+        1. login 기능 구현<br/>
+        2. 
       </td>
     </tr>
     <tr>
