@@ -114,5 +114,3 @@
     </tr>
   </tbody>
 </table>
-
-todo! TMDB.sql DATE -> DATETIME
