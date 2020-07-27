@@ -1,6 +1,62 @@
 # PJT_TM
 개인 혹은 클럽 대항 테니스 경기 매칭 및 전적 관리 웹 사이트 제작
 
+<!-- 7월 4주차 -->
+<table>
+  <thead>
+    <tr>
+      <td>7월 4주차</td>
+      <td>TODO List</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>07/27 MON</td>
+      <td>
+        1. TABLE DATE type to DATETIME<br/>
+        2. main, login page - jsp
+      </td>
+    </tr>
+    <tr>
+      <td>07/28 TUE</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>07/29 WED</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>07/30 THU</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>07/31 FRI</td>
+      <td>
+        1.
+      </td>
+    </tr>
+    <tr>
+      <td>08/01 SAT</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>08/03 SUN</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 7월 3주차 -->
 <table>
   <thead>
     <tr>
