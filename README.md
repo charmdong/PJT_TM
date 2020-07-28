@@ -59,7 +59,7 @@
     <tr>
       <td>TODO</td>
       <td>
-        1. User -> address 추가
+        1. User -> address 추가<br/>
         2. 회원가입시 우편번호 찾기 -> 카카오 open API 
       </td>
     </tr>
