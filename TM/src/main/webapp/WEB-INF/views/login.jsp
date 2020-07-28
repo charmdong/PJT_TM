@@ -11,7 +11,7 @@
     <title>login page</title>
 </head>
 <body>
-    <form action="{root}/user/login.do" method="post">
+    <form action="${root}/user/login.do" method="post">
         <label for="id">ID</label>
         <input type="text" name="id"/>
 
