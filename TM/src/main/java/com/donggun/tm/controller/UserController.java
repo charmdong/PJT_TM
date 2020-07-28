@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,6 +25,10 @@ public class UserController {
 		this.userService = userService;
 	}
 	
+	@GetMapping("/loginForm.do")
+	public String loginMain() {
+		return "login";
+	}
 	
 	@PostMapping("/login.do")
 	public String login(String id, String password, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
@@ -34,7 +39,8 @@ public class UserController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			return "";
+			model.addAttribute("errorMessage", "UserService.userLogin() 수행 중 Exception 발생");
+			return "errorPage";
 		}
 		
 		// Failed to login
@@ -47,6 +53,33 @@ public class UserController {
 		session.setAttribute("id", id);
 		session.setAttribute("password", password);
 		
-		return "index";
+		return "redirect:/";
+	}
+	
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/joinForm.do")
+	public String joinForm() {
+		return "joinForm";
+	}
+	
+	@PostMapping("/join.do")
+	public String join(User user, Model model) {
+		System.out.println(user);
+		try {
+			userService.insertUser(user);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "UserService.insertUser() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "redirect:/";
 	}
 }
