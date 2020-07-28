@@ -12,7 +12,14 @@
 </head>
 <body>
     <h1>hello world</h1>
-    <h2>${root}</h2>
-    <a href="${root}/login.jsp">button</a>
+    <c:choose>
+        <c:when test="${id eq null}">
+            <button onclick="location.href='${root}/user/loginForm.do'">login</button>
+            <button onclick="location.href='${root}/user/joinForm.do'">Join</button>
+        </c:when>
+        <c:otherwise>
+            <button onclick="location.href='${root}/user/logout.do'">logout</button>
+        </c:otherwise>
+    </c:choose>
 </body>
 </html>
