@@ -61,6 +61,7 @@
 					, #{email}
 					, #{club_code}
 					, #{ntrp}
+					, #{avg_eval_grade}
 		) 
 	</insert>
 	
