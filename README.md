@@ -22,7 +22,8 @@
       <td>07/28 TUE</td>
       <td>
         1. login 기능 구현<br/>
-        2. 
+        2. logout 기능 구현<br/>
+        3. 회원가입 기능 구현
       </td>
     </tr>
     <tr>
@@ -53,6 +54,13 @@
       <td>08/03 SUN</td>
       <td>
         1. 
+      </td>
+    </tr>
+    <tr>
+      <td>TODO</td>
+      <td>
+        1. User -> address 추가
+        2. 회원가입시 우편번호 찾기 -> 카카오 open API 
       </td>
     </tr>
   </tbody>
