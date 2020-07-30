@@ -41,7 +41,8 @@
     <tr>
       <td>07/31 FRI</td>
       <td>
-        1. 
+        1. successPage 구현(update, 게시글 올리기, etc)<br/>
+        2. success, error 시 코드 및 메세지 정리
       </td>
     </tr>
     <tr>
