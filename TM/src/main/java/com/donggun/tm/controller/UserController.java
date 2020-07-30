@@ -82,4 +82,25 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/updateForm.do")
+	public String updateForm() {
+		return "updateForm";
+	}
+	
+	@PostMapping("update.do")
+	public String update(User user, Model model) {
+		System.out.println(user);
+		try {
+			userService.updateUser(user);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "UserService.updateUser() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		// TODO 성공, 실패 코드 정리
+		model.addAttribute("successMessage", "200U");
+		return "successPage";
+	}
 }
