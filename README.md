@@ -48,13 +48,13 @@
     <tr>
       <td>08/01 SAT</td>
       <td>
-        1. 
+        1. 회원 탈퇴, 회원 정보 조회 구현
       </td>
     </tr>
     <tr>
       <td>08/03 SUN</td>
       <td>
-        1. 
+        1. info.jsp 구현
       </td>
     </tr>
     <tr>
