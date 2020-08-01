@@ -13,12 +13,18 @@
 <body>
     <form action="${root}/user/login.do" method="post">
         <label for="id">ID</label>
-        <input type="text" name="id"/>
+        <input type="text" id="id" name="id"/>
 
         <label for="password">PW</label>
-        <input type="password" name="password"/>
+        <input type="password" id="password" name="password"/>
 
         <button type="submit">LOGIN</button>
     </form>
+    
+    <script>
+        window.onload = function() {
+            document.getElementById("id").focus();
+        }
+    </script>
 </body>
 </html>
