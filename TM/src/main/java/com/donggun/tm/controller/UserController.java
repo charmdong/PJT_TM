@@ -63,6 +63,9 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	/**
+	 * 회원 가입
+	 */
 	@GetMapping("/joinForm.do")
 	public String joinForm() {
 		return "joinForm";
@@ -71,6 +74,7 @@ public class UserController {
 	@PostMapping("/join.do")
 	public String join(User user, Model model) {
 		System.out.println(user);
+		
 		try {
 			userService.insertUser(user);
 		} catch (Exception e) {
@@ -83,14 +87,39 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	/**
+	 * 회원 정보 조회
+	 */
+	@GetMapping("/info.do")
+	public String getUserInfo(String id, Model model) {
+		System.out.println("#parameter : " + id);
+		User user = null;
+		
+		try {
+			user = userService.getUser(id);
+			model.addAttribute("user", user);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "UserService.getUser() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "info";
+	}
+	
+	/**
+	 * 회원 정보 수정
+	 */
 	@GetMapping("/updateForm.do")
 	public String updateForm() {
 		return "updateForm";
 	}
 	
-	@PostMapping("update.do")
+	@PostMapping("/update.do")
 	public String update(User user, Model model) {
 		System.out.println(user);
+		
 		try {
 			userService.updateUser(user);
 		} catch(Exception e) {
@@ -99,8 +128,26 @@ public class UserController {
 			model.addAttribute("errorMessage", "UserService.updateUser() 수행 중 Exception 발생");
 			return "errorPage";
 		}
-		// TODO 성공, 실패 코드 정리
-		model.addAttribute("successMessage", "200U");
-		return "successPage";
+
+		return "redirect:/";
+	}
+	
+	/**
+	 * 회원 탈퇴
+	 */
+	@GetMapping("/delete.do")
+	public String delete(String id, Model model) {
+		System.out.println("#parameter: " + id);
+		
+		try {
+			userService.deleteUser(id);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "UserService.deleteUser() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "redirect:/";
 	}
 }
