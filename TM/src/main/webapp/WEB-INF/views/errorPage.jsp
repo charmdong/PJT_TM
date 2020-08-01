@@ -12,5 +12,6 @@
 </head>
 <body>
     <h1>${errorMessage}</h1>
+    <button onclick="location.href='${root}'">확인</button>
 </body>
 </html>
