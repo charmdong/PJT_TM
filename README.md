@@ -1,6 +1,67 @@
 # PJT_TM
 개인 혹은 클럽 대항 테니스 경기 매칭 및 전적 관리 웹 사이트 제작
 
+<!-- 8월 1주차 -->
+<table>
+  <thead>
+    <tr>
+      <td>8월 1주차</td>
+      <td>TODO List</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>08/03 MON</td>
+      <td>
+        1. DB서버, Application서버 timezone 일치화
+      </td>
+    </tr>
+    <tr>
+      <td>08/04 TUE</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>08/05 WED</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>08/06 THU</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>08/07 FRI</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>08/08 SAT</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>08/09 SUN</td>
+      <td>
+        1. 
+      </td>
+    </tr>
+    <tr>
+      <td>TODO</td>
+      <td>
+        1. User -> address 추가<br/>
+        2. 회원가입시 우편번호 찾기 -> 카카오 open API 
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <!-- 7월 4주차 -->
 <table>
   <thead>
