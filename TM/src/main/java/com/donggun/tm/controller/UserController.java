@@ -111,11 +111,6 @@ public class UserController {
 	/**
 	 * 회원 정보 수정
 	 */
-	@GetMapping("/updateForm.do")
-	public String updateForm() {
-		return "updateForm";
-	}
-	
 	@PostMapping("/update.do")
 	public String update(User user, Model model) {
 		System.out.println(user);
