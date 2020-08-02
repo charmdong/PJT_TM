@@ -19,6 +19,7 @@
         </c:when>
         <c:otherwise>
             <button onclick="location.href='${root}/user/logout.do'">logout</button>
+            <button onclick="location.href='${root}/user/info.do?id=${id}'">info</button>
         </c:otherwise>
     </c:choose>
 </body>
