@@ -69,16 +69,14 @@
 	<insert id="evaluateUser" parameterType="EvalUser">
 		INSERT INTO EVAL_USER
 			(
-				mid
-				, src_user
+				src_user
 				, des_user
 				, m_score
 				, description
 			)
 		VALUES
 			(
-				#{mid}
-				, #{src_user}
+				#{src_user}
 				, #{des_user}
 				, #{m_score}
 				, #{description}
