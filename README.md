@@ -20,7 +20,7 @@
     <tr>
       <td>08/04 TUE</td>
       <td>
-        1. 
+        1. BoardController 개발
       </td>
     </tr>
     <tr>
