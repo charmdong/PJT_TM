@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.donggun.tm.dto.EvalUser;
 import com.donggun.tm.dto.User;
 import com.donggun.tm.service.UserService;
 
@@ -141,6 +142,22 @@ public class UserController {
 			e.printStackTrace();
 			model.addAttribute("errorMessage", "UserService.deleteUser() 수행 중 Exception 발생");
 			return "errorPage";
+		}
+		
+		return "redirect:/";
+	}
+	
+	/**
+	 * 상대방 평가하기
+	 */
+	@PostMapping("/evaluate.do")
+	public String evaluate(EvalUser user) {
+		System.out.println("#parameter : " + user);
+		
+		try {
+			
+		} catch(Exception e) {
+			
 		}
 		
 		return "redirect:/";
