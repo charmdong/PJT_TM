@@ -65,6 +65,26 @@
 		) 
 	</insert>
 	
+	<!-- 평가 -->	
+	<insert id="evaluateUser" parameterType="EvalUser">
+		INSERT INTO EVAL_USER
+			(
+				mid
+				, src_user
+				, des_user
+				, m_score
+				, description
+			)
+		VALUES
+			(
+				#{mid}
+				, #{src_user}
+				, #{des_user}
+				, #{m_score}
+				, #{description}
+			)	
+	</insert>
+	
 	<!-- UPDATE -->
 	<update id="updateUser" parameterType="User">
 		UPDATE	USER
