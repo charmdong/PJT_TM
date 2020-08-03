@@ -13,7 +13,8 @@
     <tr>
       <td>08/03 MON</td>
       <td>
-        1. DB서버, Application서버 timezone 일치화
+        1. Service - evaluateUser 구현<br/>
+        2. evaluateUser에 따른 des_user의 평점 계산을 위한 trigger 설정
       </td>
     </tr>
     <tr>
@@ -43,7 +44,9 @@
     <tr>
       <td>08/08 SAT</td>
       <td>
-        1. 
+        1. DB서버, Application서버 timezone 일치화<br/>
+        2. trigger 테스트<br/>
+        3. 전체적인 설계도 작성
       </td>
     </tr>
     <tr>
