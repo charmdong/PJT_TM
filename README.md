@@ -20,13 +20,14 @@
     <tr>
       <td>08/04 TUE</td>
       <td>
-        1. BoardController 개발
+        1. Club, Court CRUD 구현<br/>
+        2. DAO, Service, Controller 구현
       </td>
     </tr>
     <tr>
       <td>08/05 WED</td>
       <td>
-        1. 
+        1. updateClub, deleteClub 
       </td>
     </tr>
     <tr>
@@ -59,7 +60,8 @@
       <td>TODO</td>
       <td>
         1. User -> address 추가<br/>
-        2. 회원가입시 우편번호 찾기 -> 카카오 open API 
+        2. 회원가입시 우편번호 찾기 -> 카카오 open API<br/>
+        3. Filter 적용 여부
       </td>
     </tr>
   </tbody>
@@ -125,7 +127,7 @@
       <td>TODO</td>
       <td>
         1. User -> address 추가<br/>
-        2. 회원가입시 우편번호 찾기 -> 카카오 open API 
+        2. 회원가입시 우편번호 찾기 -> 카카오 open API
       </td>
     </tr>
   </tbody>
