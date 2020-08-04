@@ -1,12 +1,17 @@
 package com.donggun.tm.dto;
 
+import java.sql.Date;
+
 public class Club {
-	private int club_code;
+	private int club_code; // pk
 	private String name;
 	private int city_code;
 	private int gu_code;
 	private String rep_id;
 	private double avg_ntrp;
+	private int member_num;
+	private Date reg_date;
+	private Date found_date;
 
 	public int getClub_code() {
 		return club_code;
@@ -55,11 +60,36 @@ public class Club {
 	public void setAvg_ntrp(double avg_ntrp) {
 		this.avg_ntrp = avg_ntrp;
 	}
+	
+	public int getMember_num() {
+		return member_num;
+	}
+
+	public void setMember_num(int member_num) {
+		this.member_num = member_num;
+	}
+
+	public Date getReg_date() {
+		return reg_date;
+	}
+
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+
+	public Date getFound_date() {
+		return found_date;
+	}
+
+	public void setFound_date(Date found_date) {
+		this.found_date = found_date;
+	}
 
 	@Override
 	public String toString() {
 		return "Club [club_code=" + club_code + ", name=" + name + ", city_code=" + city_code + ", gu_code=" + gu_code
-				+ ", rep_id=" + rep_id + ", avg_ntrp=" + avg_ntrp + "]";
+				+ ", rep_id=" + rep_id + ", avg_ntrp=" + avg_ntrp + ", member_num=" + member_num + ", reg_date="
+				+ reg_date + ", found_date=" + found_date + "]";
 	}
 
 }
