@@ -61,7 +61,8 @@
       <td>
         1. User -> address 추가<br/>
         2. 회원가입시 우편번호 찾기 -> 카카오 open API<br/>
-        3. Filter 적용 여부
+        3. Filter 적용 여부<br/>
+        4. 각 테이블 pk, contraint 
       </td>
     </tr>
   </tbody>
