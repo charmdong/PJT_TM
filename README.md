@@ -47,7 +47,8 @@
       <td>
         1. DB서버, Application서버 timezone 일치화<br/>
         2. trigger 테스트<br/>
-        3. 전체적인 설계도 작성
+        3. 전체적인 설계도 작성<br/>
+        4. 화면 개발 - club
       </td>
     </tr>
     <tr>
@@ -62,7 +63,8 @@
         1. User -> address 추가<br/>
         2. 회원가입시 우편번호 찾기 -> 카카오 open API<br/>
         3. Filter 적용 여부<br/>
-        4. 각 테이블 pk, contraint 
+        4. 각 테이블 pk, contraint 정리<br/>
+        5. 전체 설계도 작성
       </td>
     </tr>
   </tbody>
