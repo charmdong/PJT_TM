@@ -3,6 +3,7 @@ package com.donggun.tm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,6 +23,36 @@ public class ClubController {
 		this.clubService = clubService;
 	}
 	
+	@GetMapping("/search.do")
+	public String getClub(String name, Model model) {
+		System.out.println("#parameter : " + name);
+		
+		try {
+			clubService.getClub(name);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "ClubService.getClub() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return ""; // TODO
+	}
+	
+	@GetMapping("/searchAll.do")
+	public String getAllClub(Model model) {
+		try {
+			clubService.getAllClub();
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "ClubService.getAllClub() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return ""; // TODO
+	}
+	
 	@PostMapping("/insert.do")
 	public String insertClub(Club club, Model model) {
 		System.out.println("#parameter : " + club);
@@ -38,5 +69,35 @@ public class ClubController {
 		return "redirect:/";
 	}
 	
-	// TODO updateClub, deleteClub
+	@PostMapping("/update.do")
+	public String updateClub(Club club, Model model) {
+		System.out.println("#parameter : " + club);
+		
+		try {
+			clubService.updateClub(club);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "ClubService.updateClub() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/delete.do")
+	public String deleteClub(int club_code, Model model) {
+		System.out.println("#parameter : " + club_code);
+		
+		try {
+			clubService.deleteClub(club_code);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "ClubService.deleteClub() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "redirect:/";
+	}
 }
