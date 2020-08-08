@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.donggun.tm.dao.MatchPostDAO">
+	<!-- 조회 -->
+	<select id="searchMatchPost" parameterType="Map" resultType="MatchPost">
+		SELECT	post_no
+				, title
+				, reg_id
+				, reg_date
+				, matching_completed
+		FROM	MATCH_POST
+		WHERE	1=1
+		<if test="post_no != null and post_no != ''">
+			AND post_no = #{post_no}
+		</if>
+		<if test="title != null and title != ''">
+			AND title = #{title}
+		</if>
+		<if test="reg_id != null and reg_id != ''">
+			AND reg_id = #{reg_id}
+		</if>
+		<if test="matching_completed != null and matching_completed != ''">
+			AND matching_completed = #{matching_completed}
+		</if>
+	</select>
+	
+	<select id="detailMatchPost" parameterType="int" resultType="MatchPost">
+		SELECT	post_no
+				, title
+				, description
+				, match_date
+				, match_court_code
+				, match_type
+				, matching_completed
+				, reg_date
+		FROM	MATCH_POST
+		WHERE	post_no = #{post_no}
+	</select>
+	
+	<insert id="insertMatchPost" parameterType="MatchPost">
+		INSERT INTO MATCH_POST
+			(
+				reg_id
+				, title
+				, description
+				, match_date
+				, match_court_code
+				, match_type
+				, matching_completed
+				, reg_date
+			)
+		VALUES
+			(
+				#{reg_id}
+				, #{title}
+				, #{description}
+				, #{match_date}
+				, #{match_court_code}
+				, #{match_type}
+				, #{matching_completed}
+				, SYSDATE
+			)
+	</insert>
+
+	<update id="updateMatchPost" parameterType="MatchPost">
+		UPDATE 	MATCH_POST
+		SET		title = #{title}
+				, description = #{description}
+				, match_date = #{match_date}
+				, match_court_code = #{match_court_code}
+				, match_type = #{match_type}
+		WHERE	post_no = #{post_no}
+	</update>
+	
+	<delete id="deleteMatchPost" parameterType="int">
+		DELETE
+		FROM	MATCH_POST
+		WHERE	post_no = #{post_no}
+	</delete>
+</mapper>
