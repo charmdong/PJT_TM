@@ -22,5 +22,6 @@
             <button onclick="location.href='${root}/user/info.do?id=${id}'">info</button>
         </c:otherwise>
     </c:choose>
+    <button onclick="location.href='${root}/matchPost/search.do'">BoardList</button>
 </body>
 </html>
