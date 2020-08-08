@@ -1,5 +1,7 @@
 package com.donggun.tm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +28,11 @@ public class ClubController {
 	@GetMapping("/search.do")
 	public String getClub(String name, Model model) {
 		System.out.println("#parameter : " + name);
+		List<Club> clubList = null;
 		
 		try {
-			clubService.getClub(name);
+			clubList = clubService.getClub(name);
+			model.addAttribute("clubList", clubList);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -41,8 +45,11 @@ public class ClubController {
 	
 	@GetMapping("/searchAll.do")
 	public String getAllClub(Model model) {
+		List<Club> clubList = null;
+		
 		try {
-			clubService.getAllClub();
+			clubList = clubService.getAllClub();
+			model.addAttribute("clubList", clubList);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -85,7 +92,7 @@ public class ClubController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/delete.do")
+	@PostMapping("/delete.do")
 	public String deleteClub(int club_code, Model model) {
 		System.out.println("#parameter : " + club_code);
 		

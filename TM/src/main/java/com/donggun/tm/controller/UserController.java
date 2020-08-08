@@ -54,6 +54,8 @@ public class UserController {
 		session.setAttribute("id", id);
 		session.setAttribute("password", password);
 		
+		// TODO insert user, club info to session
+		
 		return "redirect:/";
 	}
 	
