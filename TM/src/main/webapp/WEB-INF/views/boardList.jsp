@@ -15,13 +15,13 @@
 
     <table>
         <thead>
-            <th>
-                <td>번호</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>작성 날짜</td>
-                <td>매칭 상태</td>
-            </th>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성 날짜</th>
+                <th>매칭 상태</th>
+            </tr>
         </thead>
         <tbody>
             <c:forEach var="matchPost" items="${matchPostList}">
@@ -35,5 +35,6 @@
             </c:forEach>
         </tbody>
     </table>
+    <button onclick="location.href='${root}/matchPost/registerForm.do'">게시글 작성</button>
 </body>
 </html>
