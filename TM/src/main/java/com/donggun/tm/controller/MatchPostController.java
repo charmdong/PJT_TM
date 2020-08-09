@@ -3,6 +3,8 @@ package com.donggun.tm.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,9 +62,15 @@ public class MatchPostController {
 		return "detail";
 	}
 	
+	@GetMapping("registerForm.do")
+	public String registerForm() {
+		return "registerForm";
+	}
+	
 	@PostMapping("/insert.do")
-	public String insertMatchPost(MatchPost match, Model model) {
+	public String insertMatchPost(MatchPost match, HttpSession session, Model model) {
 		System.out.println("#parameter : " + match);
+		match.setReg_id((String)session.getAttribute("id"));
 		
 		try {
 			matchPostService.insertMatchPost(match);
@@ -73,7 +81,7 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return ""; // TODO
+		return "redirect:/matchPost/search.do"; 
 	}
 	
 	@PostMapping("/update.do")
@@ -89,15 +97,15 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return ""; // TODO
+		return "redirect:/matchPost/detail.do?post_no=" + match.getPost_no(); // TODO
 	}
 	
 	@PostMapping("/delete.do")
 	public String deleteMatchPost(int post_no, Model model) {
-		System.out.println("@#parameter : " + post_no);
+		System.out.println("#parameter : " + post_no);
 		
 		try {
-			
+			matchPostService.deleteMatchPost(post_no);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -105,6 +113,6 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return ""; // TODO
+		return "boardList"; // TODO
 	}
 }
