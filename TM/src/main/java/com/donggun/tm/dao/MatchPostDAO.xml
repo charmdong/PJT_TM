@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="detailMatchPost" parameterType="int" resultType="MatchPost">
-		SELECT	post_no
+		SELECT	reg_id
 				, title
 				, description
 				, match_date
@@ -62,7 +62,7 @@
 				, #{match_court_code}
 				, #{match_type}
 				, #{matching_completed}
-				, SYSDATE
+				, NOW()
 			)
 	</insert>
 
