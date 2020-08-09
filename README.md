@@ -1,6 +1,54 @@
 # PJT_TM
 개인 혹은 클럽 대항 테니스 경기 매칭 및 전적 관리 웹 사이트 제작
 
+<h1> 게시글 TODO </h1>
+<p>1. 로그인 한 사용자만 게시글 작성 가능<br/>
+2. 수정 및 삭제 기능은 작성자 + 관리자에 한함 (USER 테이블에 isAdmin 컬럼)<br/>
+3. 게시글 작성시, 경기 날짜는 작성 일자보다 앞설 수 없음 - 유효성 검사</p>
+
+<!-- 8월 2주차 -->
+<table>
+        <thead>
+            <tr>
+                <th>8월 2주차</th>
+                <th>TODO LIST</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>08/10 MON</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>08/11 TUE</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>08/12 WED</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>08/13 THU</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>08/14 FRI</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>08/15 SAT</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>08/16 SUN</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>TODO</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 <!-- 8월 1주차 -->
 <table>
   <thead>
