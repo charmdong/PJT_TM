@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.donggun.tm.dao.ApplyPostDAO">
+
+	<select id="searchApplyPostList" parameterType="int" resultType="ApplyPost">
+		SELECT	no
+				, apply_id
+				, apply_date
+				, description
+		FROM	APPLY_POST
+		WHERE	post_no = #{post_no}
+	</select>
+	
+	<insert id="insertApplyPost" parameterType="ApplyPost">
+		INSERT INTO APPLY_POST
+				(
+					post_no
+					, apply_id
+					, apply_date
+					, description
+				)
+		VALUES
+				(
+					#{post_no}
+					, #{apply_id}
+					, NOW()
+					, #{description}
+				)
+	</insert>
+
+	<update id="updateApplyPost" parameterType="ApplyPost">
+		UPDATE	APPLY_POST
+		SET		description = #{description}
+	</update>
+	
+	<delete id="deleteApplyPost" parameterType="int">
+		DELETE
+		FROM	APPLY_POST
+		WHERE	no = #{no}
+	</delete>
+
+</mapper>
