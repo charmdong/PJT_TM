@@ -37,5 +37,6 @@
         <textarea name="description" cols="30" rows="10">${matchInfo.description}</textarea>
     </div>
     <button onclick="location.href='${root}/matchPost/search.do'">LIST</button>
+    <button onclick="location.href=''">경기 신청</button>
 </body>
 </html>
