@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.donggun.tm.dto.ApplyPost;
 import com.donggun.tm.dto.MatchPost;
 import com.donggun.tm.service.MatchPostService;
 
@@ -97,7 +98,7 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return "redirect:/matchPost/detail.do?post_no=" + match.getPost_no(); // TODO
+		return "redirect:/matchPost/detail.do?post_no=" + match.getPost_no();
 	}
 	
 	@PostMapping("/delete.do")
@@ -113,6 +114,40 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return "boardList"; // TODO
+		return "boardList";
+	}
+	
+	// 신청하기 관련
+	
+	@GetMapping("/searchApply.do")
+	public String getApplyPost(int post_no, Model model) {
+		System.out.println("#parameter : " + post_no);
+		
+		try {
+			matchPostService.searchApplyPost(post_no);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "MatchPostService.searchApplyPostList() 실행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return ""; // TODO
+	}
+	
+	@PostMapping("/insertApply.do")
+	public String inserApplyPost(ApplyPost applyPost, Model model) {
+		System.out.println("#parameter : " + applyPost);
+		
+		try {
+			matchPostService.insertApplyPost(applyPost);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "MatchPostService.insertApplyPost() 실행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "applyBoardList";
 	}
 }

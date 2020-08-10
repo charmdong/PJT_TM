@@ -6,17 +6,25 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.donggun.tm.dao.ApplyPostDAO;
 import com.donggun.tm.dao.MatchPostDAO;
+import com.donggun.tm.dto.ApplyPost;
 import com.donggun.tm.dto.MatchPost;
 
 @Service
 public class MatchPostServiceImpl implements MatchPostService {
 
 	private MatchPostDAO matchPostDao;
+	private ApplyPostDAO applyPostDao;
 	
 	@Autowired
 	public void setMatchPostDao(MatchPostDAO matchPostDao) {
 		this.matchPostDao = matchPostDao;
+	}
+	
+	@Autowired
+	public void setApplyPostDao(ApplyPostDAO applyPostDao) {
+		this.applyPostDao = applyPostDao;
 	}
 
 	@Override
@@ -42,6 +50,29 @@ public class MatchPostServiceImpl implements MatchPostService {
 	@Override
 	public void deleteMatchPost(int post_no) throws Exception {
 		matchPostDao.deleteMatchPost(post_no);
+	}
+
+	// 신청하기 관련
+	
+	@Override
+	public List<ApplyPost> searchApplyPost(int post_no) throws Exception {
+		return applyPostDao.searchApplyPostList(post_no);
+	}
+
+	@Override
+	public void insertApplyPost(ApplyPost applyPost) throws Exception {
+		applyPostDao.insertApplyPost(applyPost);
+	}
+
+	@Override
+	public void updateApplyPost(ApplyPost applyPost) throws Exception {
+		applyPostDao.updateApplyPost(applyPost);
+		
+	}
+
+	@Override
+	public void deleteApplyPost(int no) throws Exception {
+		applyPostDao.deleteApplyPost(no);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.donggun.tm.service;
 import java.util.List;
 import java.util.Map;
 
+import com.donggun.tm.dto.ApplyPost;
 import com.donggun.tm.dto.MatchPost;
 
 public interface MatchPostService {
@@ -12,4 +13,11 @@ public interface MatchPostService {
 	public void insertMatchPost(MatchPost match) throws Exception;
 	public void updateMatchPost(MatchPost match) throws Exception;
 	public void deleteMatchPost(int post_no) throws Exception;
+	
+	// 신청하기 관련
+	public List<ApplyPost> searchApplyPost(int post_no) throws Exception;
+	
+	public void insertApplyPost(ApplyPost applyPost) throws Exception;
+	public void updateApplyPost(ApplyPost applyPost) throws Exception;
+	public void deleteApplyPost(int no) throws Exception;
 }
