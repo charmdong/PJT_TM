@@ -6,6 +6,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 보기</title>
@@ -37,6 +41,26 @@
         <textarea name="description" cols="30" rows="10">${matchInfo.description}</textarea>
     </div>
     <button onclick="location.href='${root}/matchPost/search.do'">LIST</button>
-    <button onclick="location.href=''">경기 신청</button>
+    <button onclick="openModal();">경기 신청</button>
+
+    <div class="modal" style="margin:0 auto;">
+        <form action="" method="post">
+            <label for="description">내용</label><br/>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea><br/>
+            <button>신청하기</button>
+        </form>
+        <button onclick="closeModal();">close</button>
+    </div>
+
+    <script>
+        openModal = function() {
+            $(".modal").show();
+        };
+
+        closeModal = function() {
+            $(".modal").hide();
+            $("#description").val("");
+        };
+    </script>
 </body>
 </html>
