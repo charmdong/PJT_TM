@@ -29,7 +29,8 @@
 	</select>
 	
 	<select id="detailMatchPost" parameterType="int" resultType="MatchPost">
-		SELECT	reg_id
+		SELECT	post_no
+				, reg_id
 				, title
 				, description
 				, match_date
