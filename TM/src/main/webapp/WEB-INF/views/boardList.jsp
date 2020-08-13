@@ -25,7 +25,7 @@
         </thead>
         <tbody>
             <c:forEach var="matchPost" items="${matchPostList}">
-                <tr onclick="location.href='${root}/matchPost/detail.do?post_no=${matchPost.post_no}'">
+                <tr class="boardList" onclick="location.href='${root}/matchPost/detail.do?post_no=${matchPost.post_no}'" onmouseover="this.style.cursor='pointer'">
                     <td>${matchPost.post_no}</td>
                     <td>${matchPost.title}</td>
                     <td>${matchPost.reg_id}</td>
