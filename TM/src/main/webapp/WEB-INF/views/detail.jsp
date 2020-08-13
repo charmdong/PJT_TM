@@ -44,9 +44,11 @@
     <button onclick="openModal();">경기 신청</button>
 
     <div class="modal" style="margin:0 auto;">
-        <form action="" method="post">
+        <form action="${root}/matchPost/insertApply.do" method="post">
+            <input type="text" name="post_no" value="${matchInfo.post_no}" hidden>
+            <input type="text" name="apply_id" value="${id}" hidden>
             <label for="description">내용</label><br/>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea><br/>
+            <textarea name="description" id="description" cols="40" rows="10"></textarea><br/>
             <button>신청하기</button>
         </form>
         <button onclick="closeModal();">close</button>
