@@ -69,11 +69,6 @@ public class UserController {
 	/**
 	 * 회원 가입
 	 */
-	@GetMapping("/joinForm.do")
-	public String joinForm() {
-		return "joinForm";
-	}
-	
 	@PostMapping("/join.do")
 	public String join(User user, Model model) {
 		System.out.println(user);
@@ -88,6 +83,14 @@ public class UserController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	/**
+	 * 마이 페이지
+	 */
+	@GetMapping("/mypage.do")
+	public String myPage() {
+		return "myPage";
 	}
 	
 	/**

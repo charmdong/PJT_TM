@@ -33,6 +33,16 @@ public class MatchPostServiceImpl implements MatchPostService {
 	}
 	
 	@Override
+	public List<MatchPost> searchMatchPostById(String id) throws Exception {
+		return matchPostDao.searchMatchPostById(id);
+	}
+
+	@Override
+	public List<MatchPost> searchMatchPostByApplyId(String id) throws Exception {
+		return matchPostDao.searchMatchPostByApplyId(id);
+	}
+
+	@Override
 	public MatchPost detailMatchPost(int post_no) throws Exception {
 		return matchPostDao.detailMatchPost(post_no);
 	}

@@ -32,6 +32,7 @@ public class MatchPostController {
 		System.out.println("#parameter : " + param);
 		List<MatchPost> matchPostList = null;
 		
+		model.addAttribute("pageTitle", "매칭 게시판");
 		try {
 			matchPostList = matchPostService.searchMatchPost(param);
 			model.addAttribute("matchPostList", matchPostList);
@@ -39,6 +40,44 @@ public class MatchPostController {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 			model.addAttribute("errorMessage", "MatchPostService.getMatchPost() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "boardList";
+	}
+	
+	@GetMapping("/searchMyPost.do")
+	public String searchMatchPostById(String id, Model model) {
+		System.out.println("#parameter : " + id);
+		List<MatchPost> matchPostList = null;
+		
+		model.addAttribute("pageTitle", "내가 쓴 게시글");
+		try {
+			matchPostList = matchPostService.searchMatchPostById(id);
+			model.addAttribute("matchPostList", matchPostList);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "MatchPostService.searchMatchPostById() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "boardList";
+	}
+	
+	@GetMapping("/searchMyApplyPost.do")
+	public String searchMatchPostByApplyId(String id, Model model) {
+		System.out.println("#parameter : " + id);
+		List<MatchPost> matchPostList = null;
+		
+		model.addAttribute("pageTitle", "내가 신청한 게시글");
+		try {
+			matchPostList = matchPostService.searchMatchPostByApplyId(id);
+			model.addAttribute("matchPostList", matchPostList);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "MatchPostService.searchMatchPostById() 수행 중 Exception 발생");
 			return "errorPage";
 		}
 		

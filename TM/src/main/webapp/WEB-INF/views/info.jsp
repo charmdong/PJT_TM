@@ -57,7 +57,7 @@
             </tbody>
         </table>
         <button type="submit">수정</button>
-        <button location.href='${root}/'">확인</button>
+        <button location.href='${root}/user/mypage.do'">확인</button>
     </form>
 </body>
 

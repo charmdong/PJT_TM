@@ -6,6 +6,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index page</title>
@@ -15,13 +19,62 @@
     <c:choose>
         <c:when test="${id eq null}">
             <button onclick="location.href='${root}/user/loginForm.do'">login</button>
-            <button onclick="location.href='${root}/user/joinForm.do'">Join</button>
+            <button onclick="openModal();">Join</button>
         </c:when>
         <c:otherwise>
             <button onclick="location.href='${root}/user/logout.do'">logout</button>
-            <button onclick="location.href='${root}/user/info.do?id=${id}'">info</button>
+            <button onclick="location.href='${root}/user/mypage.do'">mypage</button>
         </c:otherwise>
     </c:choose>
     <button onclick="location.href='${root}/matchPost/search.do'">BoardList</button>
+
+    <div class="modal" style="margin:0 auto;">
+        <form action="${root}/user/join.do" method="post">
+            <label>ID</label>
+            <input name="id" type="text"><br/>
+    
+            <label>PW</label>
+            <input name="password" type="password"><br/>
+            
+            <label>PW Confirm</label>
+            <input name="passwordConfirm" type="password"><br/>
+    
+            <label>Name</label>
+            <input name="name" type="text"><br/>
+            
+            <label>Birth</label>
+            <input name="birth" type="date"><br/>
+    
+            <label>Phone</label>
+            <input name="phone" type="tel"><br/>
+            
+            <label>Email</label>
+            <input name="email" type="email"><br/>
+    
+            <label>NTRP</label>
+            <input name="ntrp" type="number"><br>
+            
+            <button onclick="checkPWValidation();">완료</button>
+        </form>
+        <button onclick="closeModal();">close</button>
+    </div>
+
+    <script>
+        function openModal() {
+            $(".modal").show();
+        };
+
+        function closeModal() {
+            $(".modal").hide();
+            $("#description").val("");
+        };
+
+        function checkPWValidation() {
+            let password = document.getElementsByName("password");
+            let confirm = document.getElementsByName("passwordConfirm");
+
+            return (password === confirm);
+        };
+    </script>
 </body>
 </html>

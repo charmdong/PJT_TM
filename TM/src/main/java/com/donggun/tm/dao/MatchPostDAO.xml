@@ -28,6 +28,32 @@
 		</if>
 	</select>
 	
+	<!-- 내가 쓴 글 보기 -->
+	<select id="searchMatchPostById" parameterType="String" resultType="MatchPost">
+		SELECT	post_no
+				, title
+				, reg_id
+				, reg_date
+				, matching_completed
+		FROM	MATCH_POST
+		WHERE	reg_id = #{reg_id}
+	</select>
+	
+	<!-- 내가 신청한 경기 게시글 보기 -->
+	<select id="searchMatchPostByApplyId" parameterType="String" resultType="MatchPost">
+		SELECT	post_no
+				, title
+				, reg_id
+				, reg_date
+				, matching_completed
+		FROM	MATCH_POST
+		WHERE	post_no IN 	(
+								SELECT	post_no
+								FROM	APPLY_POST
+								WHERE	apply_id = #{apply_id}
+							)
+	</select>
+	
 	<select id="detailMatchPost" parameterType="int" resultType="MatchPost">
 		SELECT	post_no
 				, reg_id

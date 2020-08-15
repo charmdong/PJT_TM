@@ -8,6 +8,8 @@ import com.donggun.tm.dto.MatchPost;
 
 public interface MatchPostService {
 	public List<MatchPost> searchMatchPost(Map param) throws Exception;
+	public List<MatchPost> searchMatchPostById(String id) throws Exception;
+	public List<MatchPost> searchMatchPostByApplyId(String id) throws Exception;
 	public MatchPost detailMatchPost(int post_no) throws Exception;
 	
 	public void insertMatchPost(MatchPost match) throws Exception;
