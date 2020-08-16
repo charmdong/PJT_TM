@@ -16,6 +16,7 @@
 					, club_code
 					, ntrp
 					, avg_eval_grade
+					, is_admin
 		FROM		USER
 		WHERE		id = #{id}
 	</select>
@@ -30,6 +31,7 @@
 					, club_code
 					, ntrp
 					, avg_eval_grade
+					, is_admin
 		FROM		USER	
 	</select>
 	
@@ -43,6 +45,7 @@
 					, club_code
 					, ntrp
 					, avg_eval_grade
+					, is_admin
 		FROM		USER
 		WHERE		1=1
 		AND			id = #{id}

@@ -53,7 +53,8 @@ public class UserController {
 		// Success to login
 		session.setAttribute("id", id);
 		session.setAttribute("password", password);
-		
+		session.setAttribute("isAdmin", user.getIs_admin());
+
 		// TODO insert user, club info to session
 		
 		return "redirect:/";

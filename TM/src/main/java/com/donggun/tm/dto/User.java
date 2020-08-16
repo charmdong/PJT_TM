@@ -12,6 +12,7 @@ public class User {
 	private int club_code;
 	private double ntrp;
 	private double avg_eval_grade;
+	private boolean is_admin;
 
 	public String getId() {
 		return id;
@@ -85,11 +86,19 @@ public class User {
 		this.avg_eval_grade = avg_eval_grade;
 	}
 
+	public boolean getIs_admin() {
+		return is_admin;
+	}
+
+	public void setIs_admin(boolean is_admin) {
+		this.is_admin = is_admin;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", name=" + name + ", birth=" + birth + ", phone=" + phone
 				+ ", email=" + email + ", club_code=" + club_code + ", ntrp=" + ntrp + ", avg_eval_grade="
-				+ avg_eval_grade + "]";
+				+ avg_eval_grade + ", is_admin=" + is_admin + "]";
 	}
 
 }
