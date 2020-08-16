@@ -40,8 +40,20 @@
         <label for="description">DESCRIPTION</label><br/>
         <textarea name="description" cols="30" rows="10">${matchInfo.description}</textarea>
     </div>
-    <button onclick="location.href='${root}/matchPost/search.do'">LIST</button>
-    <button onclick="openModal();">경기 신청</button>
+
+    <div>
+        <button onclick="location.href='${root}/matchPost/search.do'">LIST</button>
+        <c:if test="${matchInfo.reg_id != id and id != null}">
+            <button onclick="openModal();">경기 신청</button>
+        </c:if>
+    </div>
+
+    <c:if test="${id eq matchInfo.reg_id or isAdmin == true}">
+        <div>
+            <button onclick="">수정</button>
+            <button onclick="location.href='${root}/matchPost/delete.do?post_no=${matchInfo.post_no}'">삭제</button>
+        </div>
+    </c:if>
 
     <div class="modal" style="margin:0 auto;">
         <form action="${root}/matchPost/insertApply.do" method="post">

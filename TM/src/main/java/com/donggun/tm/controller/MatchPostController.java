@@ -140,7 +140,7 @@ public class MatchPostController {
 		return "redirect:/matchPost/detail.do?post_no=" + match.getPost_no();
 	}
 	
-	@PostMapping("/delete.do")
+	@GetMapping("/delete.do")
 	public String deleteMatchPost(int post_no, Model model) {
 		System.out.println("#parameter : " + post_no);
 		
@@ -149,11 +149,11 @@ public class MatchPostController {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			model.addAttribute("errorPage", "MatchPostService.deleteMatchPost() 수행 중 Exception 발생");
+			model.addAttribute("errorMessage", "MatchPostService.deleteMatchPost() 수행 중 Exception 발생");
 			return "errorPage";
 		}
 		
-		return "boardList";
+		return "redirect:/matchPost/search.do";
 	}
 	
 	// 신청하기 관련
@@ -187,6 +187,6 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return "applyBoardList";
+		return "boardList";
 	}
 }

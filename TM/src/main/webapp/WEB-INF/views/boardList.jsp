@@ -35,6 +35,9 @@
             </c:forEach>
         </tbody>
     </table>
-    <button onclick="location.href='${root}/matchPost/registerForm.do'">게시글 작성</button>
+    <c:if test="${id != null}">
+        <button onclick="location.href='${root}/matchPost/registerForm.do'">게시글 작성</button>
+    </c:if>
+    <button onclick="location.href='${root}/'">HOME</button>
 </body>
 </html>
