@@ -70,6 +70,11 @@ public class MatchPostServiceImpl implements MatchPostService {
 	}
 
 	@Override
+	public int searchIsApplied(Map param) throws Exception {
+		return applyPostDao.searchIsApplied(param);
+	}
+
+	@Override
 	public void insertApplyPost(ApplyPost applyPost) throws Exception {
 		applyPostDao.insertApplyPost(applyPost);
 	}
@@ -81,8 +86,8 @@ public class MatchPostServiceImpl implements MatchPostService {
 	}
 
 	@Override
-	public void deleteApplyPost(int no) throws Exception {
-		applyPostDao.deleteApplyPost(no);
+	public void deleteApplyPost(Map param) throws Exception {
+		applyPostDao.deleteApplyPost(param);
 	}
 
 }

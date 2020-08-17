@@ -25,10 +25,10 @@
         </thead>
         <tbody>
             <c:forEach var="matchPost" items="${matchPostList}">
-                <tr class="boardList" onclick="location.href='${root}/matchPost/detail.do?post_no=${matchPost.post_no}'" onmouseover="this.style.cursor='pointer'">
+                <tr class="boardList">
                     <td>${matchPost.post_no}</td>
-                    <td>${matchPost.title}</td>
-                    <td>${matchPost.reg_id}</td>
+                    <td onclick="location.href='${root}/matchPost/detail.do?post_no=${matchPost.post_no}'" onmouseover="this.style.cursor='pointer'">${matchPost.title}</td>
+                    <td onclick="location.href='${root}/user/info.do?id=${matchPost.reg_id}'" onmouseover="this.style.cursor='pointer'">${matchPost.reg_id}</td>
                     <td>${matchPost.reg_date}</td>
                     <td>${matchPost.matching_completed}</td>
                 </tr>

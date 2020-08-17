@@ -20,27 +20,29 @@
                     <td>ID</td>
                     <td><input type="text" value="${user.id}" name="id" readonly></td>
                 </tr>
-                <tr>
-                    <td>Name</td>
-                    <td><input type="text" value="${user.name}" name="name" readonly></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" value="${user.password}" name="password" readonly></td>
-                    <td onclick="location.href='${root}/'">수정하기</td>
-                </tr>
-                <tr>
-                    <td>Birth</td>
-                    <td><input type="date" value="${user.birth}" name="birth"></td>
-                </tr>
-                <tr>
-                    <td>Phone</td>
-                    <td><input type="tel" value="${user.phone}" name="phone"></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="text" value="${user.email}" name="email"></td>
-                </tr>
+                <c:if test="${user.id == id}">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" value="${user.name}" name="name" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" value="${user.password}" name="password" readonly></td>
+                        <td onclick="location.href='${root}/'">수정하기</td>
+                    </tr>
+                    <tr>
+                        <td>Birth</td>
+                        <td><input type="date" value="${user.birth}" name="birth"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><input type="tel" value="${user.phone}" name="phone"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" value="${user.email}" name="email"></td>
+                    </tr>
+                </c:if>
                 <tr>
                     <td>Club</td>
                     <td><input type="text" value="${user.club_code}" name="club_code" readonly></td>
@@ -56,8 +58,10 @@
                 </tr>
             </tbody>
         </table>
-        <button type="submit">수정</button>
-        <button location.href='${root}/user/mypage.do'">확인</button>
+        <c:if test="${user.id == id}">
+            <button type="submit">수정</button>
+        </c:if>
+        <button type="button" onclick="history.back();">확인</button>
     </form>
 </body>
 

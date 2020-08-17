@@ -38,13 +38,16 @@
         <input type="text" value="${matchInfo.matching_completed}" readonly><br/>
 
         <label for="description">DESCRIPTION</label><br/>
-        <textarea name="description" cols="30" rows="10">${matchInfo.description}</textarea>
+        <textarea name="description" cols="30" rows="10" readonly>${matchInfo.description}</textarea>
     </div>
 
     <div>
         <button onclick="location.href='${root}/matchPost/search.do'">LIST</button>
-        <c:if test="${matchInfo.reg_id != id and id != null}">
+        <c:if test="${matchInfo.reg_id != id and id != null and isApplied == 0}">
             <button onclick="openModal();">경기 신청</button>
+        </c:if>
+        <c:if test="${isApplied == 1}">
+            <button onclick="confirmCancel('${matchInfo.post_no}');">매칭 취소</button>
         </c:if>
     </div>
 
@@ -75,6 +78,12 @@
             $(".modal").hide();
             $("#description").val("");
         };
+
+        function confirmCancel(post_no) {
+            if(confirm("정말 취소 하시겠습니까?")) {
+                document.location.href = "${root}/matchPost/deleteApply.do?post_no=" + post_no + "&apply_id=${id}";
+            }
+        }
     </script>
 </body>
 </html>

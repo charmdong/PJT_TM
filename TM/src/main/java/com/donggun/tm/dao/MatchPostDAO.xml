@@ -103,9 +103,10 @@
 		WHERE	post_no = #{post_no}
 	</update>
 	
-	<delete id="deleteMatchPost" parameterType="int">
+	<delete id="deleteMatchPost" parameterType="Int">
 		DELETE
 		FROM	MATCH_POST
-		WHERE	post_no = #{post_no}
+		WHERE	1=1
+		AND		post_no = #{post_no}
 	</delete>
 </mapper>

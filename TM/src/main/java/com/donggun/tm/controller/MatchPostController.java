@@ -1,5 +1,6 @@
 package com.donggun.tm.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,12 @@ public class MatchPostController {
 		this.matchPostService = matchPostService;
 	}
 	
+	/**
+	 * 모든 게시글 조회
+	 * @param param
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/search.do")
 	public String getMatchPost(Map param, Model model) {
 		System.out.println("#parameter : " + param);
@@ -46,6 +53,13 @@ public class MatchPostController {
 		return "boardList";
 	}
 	
+	
+	/**
+	 * 내가 쓴 게시글 보기
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/searchMyPost.do")
 	public String searchMatchPostById(String id, Model model) {
 		System.out.println("#parameter : " + id);
@@ -65,6 +79,12 @@ public class MatchPostController {
 		return "boardList";
 	}
 	
+	/**
+	 * 내가 신청한 게시글 보기
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/searchMyApplyPost.do")
 	public String searchMatchPostByApplyId(String id, Model model) {
 		System.out.println("#parameter : " + id);
@@ -81,17 +101,32 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return "boardList";
+		return "applyBoardList";
 	}
 	
+	/**
+	 * 게시글 상세 보기
+	 * @param post_no
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/detail.do")
-	public String detailMatchPost(int post_no, Model model) {
+	public String detailMatchPost(int post_no, HttpSession session, Model model) {
 		System.out.println("#parameter : " + post_no);
+		
+		Map<String, Object> param = new HashMap<>();
+		param.put("post_no", post_no);
+		param.put("apply_id", session.getAttribute("id"));
+		
 		MatchPost matchInfo = null;
+		int isApplied = 0;
 		
 		try {
 			matchInfo = matchPostService.detailMatchPost(post_no);
 			model.addAttribute("matchInfo", matchInfo);
+			
+			isApplied = matchPostService.searchIsApplied(param);
+			model.addAttribute("isApplied", isApplied);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -107,6 +142,13 @@ public class MatchPostController {
 		return "registerForm";
 	}
 	
+	/**
+	 * 게시글 작성하기
+	 * @param match
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/insert.do")
 	public String insertMatchPost(MatchPost match, HttpSession session, Model model) {
 		System.out.println("#parameter : " + match);
@@ -124,6 +166,12 @@ public class MatchPostController {
 		return "redirect:/matchPost/search.do"; 
 	}
 	
+	/**
+	 * 게시글 수정하기
+	 * @param match
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/update.do")
 	public String updateMatchPost(MatchPost match, Model model) {
 		System.out.println("#parameter : " + match);
@@ -140,6 +188,12 @@ public class MatchPostController {
 		return "redirect:/matchPost/detail.do?post_no=" + match.getPost_no();
 	}
 	
+	/**
+	 * 게시글 삭제하기
+	 * @param post_no
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/delete.do")
 	public String deleteMatchPost(int post_no, Model model) {
 		System.out.println("#parameter : " + post_no);
@@ -158,12 +212,20 @@ public class MatchPostController {
 	
 	// 신청하기 관련
 	
-	@GetMapping("/searchApply.do")
+	/**
+	 * 게시글 신청 현황 조회
+	 * @param post_no
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/searchApply.do") // TODO 필요성 검토
 	public String getApplyPost(int post_no, Model model) {
 		System.out.println("#parameter : " + post_no);
+		List<ApplyPost> applyPostList = null;
 		
 		try {
-			matchPostService.searchApplyPost(post_no);
+			applyPostList = matchPostService.searchApplyPost(post_no);
+			model.addAttribute("applyPostList", applyPostList);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -171,9 +233,15 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return ""; // TODO
+		return "applyBoardList";
 	}
 	
+	/**
+	 * 경기 매칭 신청하기
+	 * @param applyPost
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/insertApply.do")
 	public String inserApplyPost(ApplyPost applyPost, Model model) {
 		System.out.println("#parameter : " + applyPost);
@@ -187,6 +255,34 @@ public class MatchPostController {
 			return "errorPage";
 		}
 		
-		return "boardList";
+		return "redirect:/matchPost/search.do";
+	}
+	
+	/**
+	 * 경기 매칭 신청 취소하기
+	 * @param param
+	 * post_no - 게시글 번호
+	 * apply_id - 신청 아이디
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/deleteApply.do")
+	public String deleteApplyPost(int post_no, String apply_id, Model model) {
+		System.out.println("#parameter : " + post_no + "," + apply_id);
+		
+		Map<String, Object> param = new HashMap<>();
+		param.put("post_no", post_no);
+		param.put("apply_id", apply_id);
+		
+		try {
+			matchPostService.deleteApplyPost(param);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "MatchPostService.deleteApplyPost() 수행 중 Exception 발생");
+			return "errorPage";
+		}
+		
+		return "redirect:/matchPost/searchMyApplyPost.do?id=" + apply_id;
 	}
 }

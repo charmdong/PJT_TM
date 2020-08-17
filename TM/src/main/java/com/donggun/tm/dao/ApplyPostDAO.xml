@@ -15,6 +15,15 @@
 		WHERE	post_no = #{post_no}
 	</select>
 	
+	<!-- 특정 게시글에 대한 경기 매칭 신청 여부 조회 -->
+	<select id="searchIsApplied" parameterType="Map" resultType="int">
+		SELECT	COUNT(*)
+		FROM	APPLY_POST
+		WHERE	1=1
+		AND		post_no = #{post_no}
+		AND		apply_id = #{apply_id}
+	</select>
+	
 	<insert id="insertApplyPost" parameterType="ApplyPost">
 		INSERT INTO APPLY_POST
 				(
@@ -35,12 +44,17 @@
 	<update id="updateApplyPost" parameterType="ApplyPost">
 		UPDATE	APPLY_POST
 		SET		description = #{description}
+		WHERE	1=1
+		AND		post_no = #{post_no}
+		AND		apply_id = #{apply_id}
 	</update>
 	
-	<delete id="deleteApplyPost" parameterType="int">
+	<delete id="deleteApplyPost" parameterType="Map">
 		DELETE
 		FROM	APPLY_POST
-		WHERE	no = #{no}
+		WHERE	1=1
+		AND		post_no = #{post_no}
+		AND		apply_id = #{apply_id}
 	</delete>
 
 </mapper>

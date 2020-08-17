@@ -18,8 +18,9 @@ public interface MatchPostService {
 	
 	// 신청하기 관련
 	public List<ApplyPost> searchApplyPost(int post_no) throws Exception;
+	public int searchIsApplied(Map param) throws Exception;
 	
 	public void insertApplyPost(ApplyPost applyPost) throws Exception;
 	public void updateApplyPost(ApplyPost applyPost) throws Exception;
-	public void deleteApplyPost(int no) throws Exception;
+	public void deleteApplyPost(Map param) throws Exception;
 }
