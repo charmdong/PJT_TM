@@ -61,12 +61,12 @@
     </div>
 
     <div class="modal" id="apply_modal" style="margin:0 auto;">
-        <form action="${root}/matchPost/insertApply.do" method="post" style="text-align: center;">
+        <form id="apply_modal_form" action="${root}/matchPost/insertApply.do" method="post" style="text-align: center;">
             <input type="text" name="post_no" value="${matchInfo.post_no}" hidden>
             <input type="text" name="apply_id" value="${id}" hidden>
             <label for="description">내용</label><br />
             <textarea name="description" id="description" cols="45" rows="15"></textarea><br />
-            <button>신청하기</button>
+            <input type="button" value="신청하기" onclick="confirmRegist();">
             <button type="button" onclick="closeModal('apply_modal');">close</button>
         </form>
     </div>
@@ -108,8 +108,14 @@
 
         closeModal = function (modalId) {
             $("#" + modalId).hide();
-            $("#" + modalId + "").val("");
+            $("#" + modalId + " textarea").val("");
         };
+
+        function confirmRegist() {
+            if(confirm("신청하시겠습니까?")) {
+                $("#apply_modal_form").submit();    
+            } 
+        }
 
         function confirmCancel(post_no) {
             if (confirm("정말 취소하시겠습니까?")) {
