@@ -55,17 +55,25 @@
 	<!-- INSERT -->
 	<insert id="insertUser" parameterType="User">
 		INSERT INTO	USER
-		VALUES	(
+				(
+					id
+					, password
+					, name
+					, birth
+					, phone
+					, email
+					, ntrp
+				)
+		VALUES	
+				(
 					#{id}
 					, #{password}
 					, #{name}
 					, #{birth}
 					, #{phone}
 					, #{email}
-					, #{club_code}
 					, #{ntrp}
-					, #{avg_eval_grade}
-		) 
+ 				) 
 	</insert>
 	
 	<!-- 평가 -->	
