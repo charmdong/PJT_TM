@@ -282,7 +282,7 @@ public class MatchPostController {
 			model.addAttribute("errorMessage", "MatchPostService.deleteApplyPost() 수행 중 Exception 발생");
 			return "errorPage";
 		}
-		
+		// TODO 상세 보기 중에서 삭제했을 경우에는 그대로 그 게시글로 돌아가야 한다. -> 비동기
 		return "redirect:/matchPost/searchMyApplyPost.do?id=" + apply_id;
 	}
 }
