@@ -1,5 +1,6 @@
 package com.donggun.tm.api;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.donggun.tm.dto.ApplyPost;
 import com.donggun.tm.dto.MatchPost;
 import com.donggun.tm.service.MatchPostService;
 
@@ -100,4 +102,39 @@ public class MatchPostRestController {
 	}
 	
 	// Apply MatchPost
+	@PostMapping("/matchPost/registApply")
+	public int registApplyMatchPost(@RequestBody ApplyPost applyPost) {
+		int registCnt = 0;
+		System.out.println(applyPost);
+		try {
+			matchPostService.insertApplyPost(applyPost);
+			registCnt = 1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return registCnt;
+	}
+	
+	@DeleteMapping("/matchPost/deleteApply/{apply_id}/{post_no}")
+	public int deleteApplyMatchPost(@PathVariable String apply_id, @PathVariable int post_no) {
+		int deleteCnt = 0;
+		
+		Map<String, Object> param = new HashMap<>();
+		
+		param.put("apply_id", apply_id);
+		param.put("post_no", post_no);
+		
+		try {
+			matchPostService.deleteApplyPost(param);
+			deleteCnt = 1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return deleteCnt;
+	}
+
 }
