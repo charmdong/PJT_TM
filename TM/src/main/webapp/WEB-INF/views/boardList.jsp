@@ -11,9 +11,9 @@
     <title>${pageTitle}</title>
 </head>
 <body>
-    <h1>Board List</h1>
+    <h1 align="center">Board List</h1>
 
-    <table>
+    <table align="center" style="text-align: center;">
         <thead>
             <tr>
                 <th>번호</th>
@@ -30,14 +30,21 @@
                     <td onclick="location.href='${root}/matchPost/detail.do?post_no=${matchPost.post_no}'" onmouseover="this.style.cursor='pointer'">${matchPost.title}</td>
                     <td onclick="location.href='${root}/user/info.do?id=${matchPost.reg_id}'" onmouseover="this.style.cursor='pointer'">${matchPost.reg_id}</td>
                     <td>${matchPost.reg_date}</td>
-                    <td>${matchPost.matching_completed}</td>
+                    <c:if test="${matchPost.matching_completed == false}">
+                        <td style="color:chocolate;">진행 중...</td>
+                    </c:if>
+                    <c:if test="${matchPost.matching_completed != false}">
+                        <td style="color:greenyellow;">매칭 완료</td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
-    <c:if test="${id != null}">
-        <button onclick="location.href='${root}/matchPost/registerForm.do'">게시글 작성</button>
-    </c:if>
-    <button onclick="location.href='${root}/'">HOME</button>
+    <div class="buttonBox" align="center" style="margin-top:20px;">
+        <c:if test="${id != null}">
+            <button onclick="location.href='${root}/matchPost/registerForm.do'">게시글 작성</button>
+        </c:if>
+        <button onclick="location.href='${root}/'">HOME</button>
+    </div>
 </body>
 </html>

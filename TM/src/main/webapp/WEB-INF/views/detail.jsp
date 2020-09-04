@@ -113,13 +113,49 @@
 
         function confirmRegist() {
             if(confirm("신청하시겠습니까?")) {
-                $("#apply_modal_form").submit();    
+                // $("#apply_modal_form").submit();
+
+                $.ajax({
+                    url: '${root}/matchPost/registApply',
+                    contentType: 'application/json; charset=utf-8',
+                    type: 'post',
+                    dataType: 'text',
+                    data: JSON.stringify({
+                        post_no: '${matchInfo.post_no}',
+                        apply_id: '${id}',
+                        description: $('#description').val()
+                    }),
+                    success: function(response) {
+                        console.dir(response);
+
+                        alert("경기 매칭 신청이 완료되었습니다.");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        console.dir(response);
+
+                        alert("경기 매칭 신청 중 오류가 발생했습니다.");
+                    }
+                })
             } 
         }
 
         function confirmCancel(post_no) {
             if (confirm("정말 취소하시겠습니까?")) {
-                document.location.href = "${root}/matchPost/deleteApply.do?post_no=" + post_no + "&apply_id=${id}";
+                // document.location.href = "${root}/matchPost/deleteApply.do?post_no=" + post_no + "&apply_id=${id}";
+            
+                $.ajax({
+                    url: '${root}/matchPost/deleteApply/${id}/' + post_no,
+                    type: 'delete',
+                    dataType: 'text',
+                    success: function(response) {
+                        alert('경기 매칭이 취소되었습니다.');
+                        location.reload();
+                    },
+                    error: function() {
+                        alert('경기 매칭 취소 중 오류가 발생했습니다.');
+                    }
+                })
             }
         }
 

@@ -15,29 +15,31 @@
     <title>index page</title>
 </head>
 <body>
-    <h1>hello world</h1>
-    <c:choose>
-        <c:when test="${id eq null}">
-            <button onclick="location.href='${root}/user/loginForm.do'">login</button>
-            <button onclick="openModal();">Join</button>
-        </c:when>
-        <c:otherwise>
-            <button onclick="location.href='${root}/user/logout.do'">logout</button>
-            <button onclick="location.href='${root}/user/mypage.do'">mypage</button>
-        </c:otherwise>
-    </c:choose>
-    <button onclick="location.href='${root}/matchPost/search.do'">BoardList</button>
-
+    <h1 align="center">hello world</h1>
+    <div align="center" class="buttonBox">
+        <c:choose>
+            <c:when test="${id eq null}">
+                <button onclick="location.href='${root}/user/loginForm.do'">login</button>
+                <button onclick="openModal();">Join</button>
+            </c:when>
+            <c:otherwise>
+                <button onclick="location.href='${root}/user/logout.do'">logout</button>
+                <button onclick="location.href='${root}/user/mypage.do'">mypage</button>
+            </c:otherwise>
+        </c:choose>
+        <button onclick="location.href='${root}/matchPost/search.do'">BoardList</button>
+    </div>
+    
     <div class="modal" style="margin:0 auto;">
         <form action="${root}/user/join.do" method="post">
             <label>ID</label>
             <input name="id" type="text"><br/>
     
             <label>PW</label>
-            <input name="password" type="password"><br/>
+            <input id="password" name="password" type="password"><br/>
             
             <label>PW Confirm</label>
-            <input name="passwordConfirm" type="password"><br/>
+            <input id="passwordConfirm" name=passwordConfirm" type="password"><br/>
     
             <label>Name</label>
             <input name="name" type="text"><br/>
@@ -52,7 +54,7 @@
             <input name="email" type="email"><br/>
     
             <label>NTRP</label>
-            <input name="ntrp" type="number"><br>
+            <input name="ntrp"><br>
             
             <button onclick="checkPWValidation();">완료</button>
         </form>
@@ -70,10 +72,7 @@
         };
 
         function checkPWValidation() {
-            let password = document.getElementsByName("password");
-            let confirm = document.getElementsByName("passwordConfirm");
-
-            return (password === confirm);
+            return($('#password').val() == $('passwordConfirm').val());
         };
     </script>
 </body>

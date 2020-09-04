@@ -6,14 +6,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신청 현황</title>
 </head>
 <body>
-    <h1>Apply Board List</h1>
+    <h1 align="center">Apply Board List</h1>
 
-    <table>
+    <table align="center" style="text-align: center;">
         <thead>
             <tr>
                 <th>번호</th>
@@ -39,12 +43,25 @@
             </c:forEach>
         </tbody>
     </table>
-    <button onclick="location.href='${root}/'">HOME</button>
+    <div align="center" class="buttonBox" style="margin-top: 20px;">
+        <button onclick="location.href='${root}/'">HOME</button>    
+    </div>
 
     <script>
         function confirmCancel(post_no) {
             if(confirm("정말 취소 하시겠습니까?")) {
-                document.location.href = '${root}/matchPost/deleteApply.do?post_no=' + post_no + '&apply_id=${id}';
+                $.ajax({
+                    url: '${root}/matchPost/deleteApply/${id}/' + post_no,
+                    type: 'delete',
+                    dataType: 'text',
+                    success: function(response) {
+                        alert('경기 매칭이 취소되었습니다.');
+                        location.reload();
+                    },
+                    error: function() {
+                        alert('경기 매칭 취소 중 오류가 발생했습니다.');
+                    }
+                })    
             }
         };
     </script>
