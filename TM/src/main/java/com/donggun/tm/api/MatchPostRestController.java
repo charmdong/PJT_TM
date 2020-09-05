@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import com.donggun.tm.dto.MatchPost;
 import com.donggun.tm.service.MatchPostService;
 
 @RestController
+@RequestMapping("/matchPost")
 public class MatchPostRestController {
 
 	private MatchPostService matchPostService;
@@ -27,7 +29,7 @@ public class MatchPostRestController {
 		this.matchPostService = matchPostService;
 	}
 	
-	@GetMapping("/matchPost")
+	@GetMapping("")
 	public List<MatchPost> getAllMatchPost(@RequestParam Map<String, Object> param) {
 		List<MatchPost> matchPostList = null;
 		
@@ -41,7 +43,7 @@ public class MatchPostRestController {
 		return matchPostList;
 	}
 	
-	@GetMapping("/matchPost/{post_no}")
+	@GetMapping("/{post_no}")
 	public MatchPost detailMatchPost(@PathVariable int post_no) {
 		MatchPost matchPost = null;
 		
@@ -56,7 +58,7 @@ public class MatchPostRestController {
 		return matchPost;
 	}
 	
-	@PostMapping("/matchPost/regist")
+	@PostMapping("/regist")
 	public int registMatchPost(@RequestBody MatchPost matchPost) {
 		int registCnt = 0;
 		
@@ -71,7 +73,7 @@ public class MatchPostRestController {
 		return registCnt;
 	}
 
-	@PostMapping("/matchPost/modify")
+	@PostMapping("/modify")
 	public int modifyMatchPost(@RequestBody MatchPost matchPost) {
 		int modifyCnt = 0;
 		
@@ -86,7 +88,7 @@ public class MatchPostRestController {
 		return modifyCnt;
 	}
 	
-	@DeleteMapping("/matchPost/delete/{post_no}")
+	@DeleteMapping("/delete/{post_no}")
 	public int deleteMatchPost(@PathVariable int post_no) {
 		int deleteCnt = 0;
 		
@@ -102,7 +104,7 @@ public class MatchPostRestController {
 	}
 	
 	// Apply MatchPost
-	@PostMapping("/matchPost/registApply")
+	@PostMapping("/registApply")
 	public int registApplyMatchPost(@RequestBody ApplyPost applyPost) {
 		int registCnt = 0;
 		System.out.println(applyPost);
@@ -117,7 +119,7 @@ public class MatchPostRestController {
 		return registCnt;
 	}
 	
-	@DeleteMapping("/matchPost/deleteApply/{apply_id}/{post_no}")
+	@DeleteMapping("/deleteApply/{apply_id}/{post_no}")
 	public int deleteApplyMatchPost(@PathVariable String apply_id, @PathVariable int post_no) {
 		int deleteCnt = 0;
 		
