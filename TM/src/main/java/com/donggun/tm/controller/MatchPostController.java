@@ -218,7 +218,7 @@ public class MatchPostController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/searchApply.do") // TODO 필요성 검토
+	@GetMapping("/searchApply.do") // TODO 비동기로 만드는 게 낫겠다.
 	public String getApplyPost(int post_no, Model model) {
 		System.out.println("#parameter : " + post_no);
 		List<ApplyPost> applyPostList = null;

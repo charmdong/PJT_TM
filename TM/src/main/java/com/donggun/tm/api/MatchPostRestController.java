@@ -119,6 +119,20 @@ public class MatchPostRestController {
 		return registCnt;
 	}
 	
+	@GetMapping("/searchApplyList/{post_no}")
+	public List<ApplyPost> getApplyList(@PathVariable int post_no) {
+		List<ApplyPost> applyPostList = null;
+		
+		try {
+			applyPostList = matchPostService.searchApplyPost(post_no);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return applyPostList;
+	}
+	
 	@DeleteMapping("/deleteApply/{apply_id}/{post_no}")
 	public int deleteApplyMatchPost(@PathVariable String apply_id, @PathVariable int post_no) {
 		int deleteCnt = 0;
