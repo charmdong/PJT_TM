@@ -14,6 +14,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 보기</title>
+
+    <style>
+        #applyList tbody td {
+            width: 100px;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,7 +64,24 @@
         <c:if test="${id eq matchInfo.reg_id or isAdmin == true}">
             <button onclick="openModal('modify_modal');">수정</button>
             <button onclick="confirmDelete('${matchInfo.post_no}');">삭제</button>
+            <button onclick="showApplyList('${matchInfo.post_no}');">신청 현황</button>
         </c:if>
+    </div>
+
+    <div id="applyList" style="display: none;">
+        <table align="center" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>신청자</th>
+                    <th>신청 날짜</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
     </div>
 
     <div class="modal" id="apply_modal" style="margin:0 auto;">
@@ -163,6 +187,30 @@
             if (confirm("정말 삭제하시겠습니까?")) {
                 document.location.href='${root}/matchPost/delete.do?post_no=' + post_no;
             }
+        }
+
+        function showApplyList(post_no) {
+            $.ajax({
+                type: 'get',
+                url : '${root}/matchPost/searchApplyList/' + post_no,
+                dataType: 'text',
+                success: function(response) {
+                    response = JSON.parse(response);
+
+                    for(var index = 0; index < response.length; index++) {
+                        var tr = '<td>' + response[index].no + '</td>' +
+                                    '<td>' + response[index].apply_id + '</td>' +
+                                    '<td>' + response[index].apply_date + '</td>' +
+                                    '<td>' + response[index].description + '</td>';
+                        $('#applyList tbody').append('<tr>' + tr + '</tr>');
+                    }
+
+                    $('#applyList').show();
+                },
+                error: function(response) {
+                    alert("신청 현황 조회 중 오류가 발생했습니다.");
+                }
+            })
         }
     </script>
 </body>
