@@ -30,7 +30,7 @@
         <button onclick="location.href='${root}/matchPost/search.do'">BoardList</button>
     </div>
     
-    <div class="modal" style="margin:0 auto;">
+    <div class="modal" id="join_modal" style="margin:0 auto;">
         <form action="${root}/user/join.do" method="post">
             <label>ID</label>
             <input name="id" type="text"><br/>
