@@ -19,8 +19,8 @@
     <div align="center" class="buttonBox">
         <c:choose>
             <c:when test="${id eq null}">
-                <button onclick="location.href='${root}/user/loginForm.do'">login</button>
-                <button onclick="openModal();">Join</button>
+                <button onclick="openModal('#login_modal');">login</button>
+                <button onclick="openModal('#join_modal');">Join</button>
             </c:when>
             <c:otherwise>
                 <button onclick="location.href='${root}/user/logout.do'">logout</button>
@@ -30,6 +30,19 @@
         <button onclick="location.href='${root}/matchPost/search.do'">BoardList</button>
     </div>
     
+    <div class="modal" id="login_modal" style="margin:0 auto;">
+        <form action="${root}/user/login.do" method="post">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id"/>
+            <br/>
+            <label for="password">PW</label>
+            <input type="password" id="password" name="password"/>
+            <br/>
+            <button type="submit">로그인</button>
+            <button type="button" onclick="closeModal('#login_modal');">취소</button>
+        </form>
+    </div>
+
     <div class="modal" id="join_modal" style="margin:0 auto;">
         <form action="${root}/user/join.do" method="post">
             <label>ID</label>
@@ -56,19 +69,21 @@
             <label>NTRP</label>
             <input name="ntrp"><br>
             
-            <button onclick="checkPWValidation();">완료</button>
+            <div align="center" class="buttonBox">
+                <button onclick="checkPWValidation();">가입하기</button>
+                <button type="button" onclick="closeModal('#join_modal');">취소</button>
+                <button type="reset">초기화</button>
+            </div>
         </form>
-        <button onclick="closeModal();">close</button>
     </div>
 
     <script>
-        function openModal() {
-            $(".modal").show();
+        function openModal(modal) {
+            $(modal).show();
         };
 
-        function closeModal() {
-            $(".modal").hide();
-            $("#description").val("");
+        function closeModal(modal) {
+            $(modal).hide();
         };
 
         function checkPWValidation() {
