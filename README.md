@@ -6,8 +6,11 @@
 <h2> Back-end </h2>
 1. java<br/>
 2. Spring Framework<br/>
-3. Mysql
+3. Mysql<br/>
+4. Mybatis
 
 <h2> Front-end </h2>
-1. React
+1. React</br>
+2. jsp</br>
+3. javascript<br/>
 </p>
