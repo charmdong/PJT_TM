@@ -68,7 +68,7 @@
         </c:if>
     </div>
 
-    <div id="applyList" style="display: none;">
+    <div id="applyList" style="display: none; margin-top:50px;">
         <table align="center" style="text-align: center;">
             <thead>
                 <tr>
