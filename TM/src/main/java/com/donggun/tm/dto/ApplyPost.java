@@ -9,6 +9,7 @@ public class ApplyPost {
 	private String apply_id;
 	private Date apply_date;
 	private String description;
+	private boolean accepted;
 
 	public int getNo() {
 		return no;
@@ -50,10 +51,18 @@ public class ApplyPost {
 		this.description = description;
 	}
 
+	public boolean getAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(boolean accepted) {
+		this.accepted = accepted;
+	}
+
 	@Override
 	public String toString() {
 		return "ApplyPost [no=" + no + ", post_no=" + post_no + ", apply_id=" + apply_id + ", apply_date=" + apply_date
-				+ ", description=" + description + "]";
+				+ ", description=" + description + ", accepted=" + accepted + "]";
 	}
 
 }

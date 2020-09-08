@@ -11,6 +11,7 @@
 				, apply_id
 				, apply_date
 				, description
+				, accepted
 		FROM	APPLY_POST
 		WHERE	post_no = #{post_no}
 	</select>
@@ -44,6 +45,7 @@
 	<update id="updateApplyPost" parameterType="ApplyPost">
 		UPDATE	APPLY_POST
 		SET		description = #{description}
+				, accepted = #{accepted}
 		WHERE	1=1
 		AND		post_no = #{post_no}
 		AND		apply_id = #{apply_id}
