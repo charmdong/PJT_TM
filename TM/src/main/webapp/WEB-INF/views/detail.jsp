@@ -76,6 +76,7 @@
                     <th>신청자</th>
                     <th>신청 날짜</th>
                     <th>내용</th>
+                    <th>비고</th>
                 </tr>
             </thead>
             <tbody>
@@ -189,6 +190,12 @@
             }
         }
 
+        function confirmApply(post_no) {
+            if(confirm("매칭 신청을 수락하시겠습니까?")) {
+                
+            }
+        }
+
         function showApplyList(post_no) {
             $.ajax({
                 type: 'get',
@@ -201,7 +208,8 @@
                         var tr = '<td>' + response[index].no + '</td>' +
                                     '<td>' + response[index].apply_id + '</td>' +
                                     '<td>' + response[index].apply_date + '</td>' +
-                                    '<td>' + response[index].description + '</td>';
+                                    '<td>' + response[index].description + '</td>' +
+                                    '<td><button onclick="confirmApply(' + response[index].post_no + ')">수락</button></td>';
                         $('#applyList tbody').append('<tr>' + tr + '</tr>');
                     }
 
