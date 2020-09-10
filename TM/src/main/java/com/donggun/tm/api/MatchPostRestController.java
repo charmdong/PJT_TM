@@ -153,4 +153,27 @@ public class MatchPostRestController {
 		return deleteCnt;
 	}
 
+	@PostMapping("/completeMatching")
+	public int completeMatching(@RequestBody ApplyPost applyPost) {
+		int updateCnt = 0;
+		
+		Map<String, Object> param = new HashMap<>();
+		
+		param.put("matching_completed", true);
+		param.put("matched_apply_no", applyPost.getNo());
+		param.put("post_no", applyPost.getPost_no());
+		
+		try {
+			matchPostService.updateApplyPost(applyPost);
+			updateCnt++;
+
+			matchPostService.updateMatchPostStatus(param);
+			updateCnt++;
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return updateCnt;
+	}
 }

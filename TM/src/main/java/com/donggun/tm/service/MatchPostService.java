@@ -14,6 +14,7 @@ public interface MatchPostService {
 	
 	public void insertMatchPost(MatchPost match) throws Exception;
 	public void updateMatchPost(MatchPost match) throws Exception;
+	public void updateMatchPostStatus(Map param) throws Exception;
 	public void deleteMatchPost(int post_no) throws Exception;
 	
 	// 신청하기 관련

@@ -106,6 +106,13 @@
 		WHERE	post_no = #{post_no}
 	</update>
 	
+	<update id="updateMatchPostStatus" parameterType="Map">
+		UPDATE 	MATCH_POST
+		SET		matching_completed = #{matching_completed}
+				, matched_apply_no = #{matched_apply_no}
+		WHERE	post_no = #{post_no}		
+	</update>
+	
 	<delete id="deleteMatchPost" parameterType="Int">
 		DELETE
 		FROM	MATCH_POST

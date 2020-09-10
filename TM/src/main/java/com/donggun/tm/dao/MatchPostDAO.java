@@ -23,6 +23,7 @@ public interface MatchPostDAO {
 	
 	// UPDATE
 	public void updateMatchPost(MatchPost match) throws SQLException;
+	public void updateMatchPostStatus(Map param) throws SQLException;
 	
 	// DELTE
 	public void deleteMatchPost(int post_no) throws SQLException;

@@ -58,6 +58,11 @@ public class MatchPostServiceImpl implements MatchPostService {
 	}
 
 	@Override
+	public void updateMatchPostStatus(Map param) throws Exception {
+		matchPostDao.updateMatchPostStatus(param);
+	}
+
+	@Override
 	public void deleteMatchPost(int post_no) throws Exception {
 		matchPostDao.deleteMatchPost(post_no);
 	}
@@ -82,7 +87,6 @@ public class MatchPostServiceImpl implements MatchPostService {
 	@Override
 	public void updateApplyPost(ApplyPost applyPost) throws Exception {
 		applyPostDao.updateApplyPost(applyPost);
-		
 	}
 
 	@Override
