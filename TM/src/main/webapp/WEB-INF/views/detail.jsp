@@ -190,9 +190,26 @@
             }
         }
 
-        function confirmApply(post_no) {
+        function confirmApply(applyPost) {
             if(confirm("매칭 신청을 수락하시겠습니까?")) {
-                
+                applyPost.accepted = true;
+
+                $.ajax({
+                    type:'post',
+                    dataType: 'json',
+                    url : '${root}/matchPost/completeMatching',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(applyPost),
+                    success: function(response) {
+                        if(JSON.parse(response).updateCnt == 1) {
+                            alert("경기 매칭이 완료되었습니다.");
+                            location.reload();
+                        }
+                    },
+                    error:function(response) {
+                        alert("경기 매칭 수락 진행 중 에러가 발생했습니다.");
+                    }
+                })
             }
         }
 
@@ -209,8 +226,22 @@
                                     '<td>' + response[index].apply_id + '</td>' +
                                     '<td>' + response[index].apply_date + '</td>' +
                                     '<td>' + response[index].description + '</td>' +
-                                    '<td><button onclick="confirmApply(' + response[index].post_no + ')">수락</button></td>';
+                                    '<td><button>수락</button></td>';
+                        
                         $('#applyList tbody').append('<tr>' + tr + '</tr>');
+                        $('#applyList tbody tr:last-child button').click(function() {
+                            const tdList = $('#applyList tbody tr:last-child td');
+
+                            const applyPost = {
+                                no: tdList[0].outerText,
+                                apply_id: tdList[1].outerText,
+                                apply_date: tdList[2].outerText,
+                                description: tdList[3].outerText,
+                                post_no: post_no
+                            };
+
+                            confirmApply(applyPost);
+                        });
                     }
 
                     $('#applyList').show();
