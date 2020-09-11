@@ -156,7 +156,7 @@ public class MatchPostRestController {
 	@PostMapping("/completeMatching")
 	public int completeMatching(@RequestBody ApplyPost applyPost) {
 		int updateCnt = 0;
-		
+		System.out.println(applyPost);
 		Map<String, Object> param = new HashMap<>();
 		
 		param.put("matching_completed", true);
