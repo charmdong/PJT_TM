@@ -18,13 +18,13 @@ import com.donggun.tm.service.ClubService;
 @Controller
 public class ClubController {
 
-	private ClubService clubService;
+	private final ClubService clubService;
 	
 	@Autowired
-	public void setClubService(ClubService clubService) {
+	public ClubController(ClubService clubService) {
 		this.clubService = clubService;
 	}
-	
+
 	@GetMapping("/search.do")
 	public String getClub(String name, Model model) {
 		System.out.println("#parameter : " + name);

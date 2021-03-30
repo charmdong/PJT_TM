@@ -19,13 +19,13 @@ import com.donggun.tm.service.UserService;
 @Controller
 public class UserController {
 
-	private UserService userService;
+	private final UserService userService;
 	
 	@Autowired
-	public void setUserService(UserService userService) {
+	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@GetMapping("/loginForm.do")
 	public String loginMain() {
 		return "login";

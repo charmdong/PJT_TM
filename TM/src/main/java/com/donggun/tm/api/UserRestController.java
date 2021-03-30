@@ -16,13 +16,13 @@ import com.donggun.tm.service.UserService;
 @RequestMapping("/user")
 public class UserRestController {
 
-	private UserService userService;
+	private final UserService userService;
 	
 	@Autowired
-	public void setUserService(UserService userService) {
+	public UserRestController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@GetMapping(value = "/info/{id}")
 	public User getUserInfo(@PathVariable String id) {
 		User user = null;

@@ -22,13 +22,13 @@ import com.donggun.tm.service.MatchPostService;
 @RequestMapping("/matchPost")
 public class MatchPostRestController {
 
-	private MatchPostService matchPostService;
+	private final MatchPostService matchPostService;
 	
 	@Autowired
-	public void setMatchPostService(MatchPostService matchPostService) {
+	public MatchPostRestController(MatchPostService matchPostService) {
 		this.matchPostService = matchPostService;
 	}
-	
+
 	@GetMapping("")
 	public List<MatchPost> getAllMatchPost(@RequestParam Map<String, Object> param) {
 		List<MatchPost> matchPostList = null;
@@ -176,4 +176,5 @@ public class MatchPostRestController {
 		
 		return updateCnt;
 	}
+
 }

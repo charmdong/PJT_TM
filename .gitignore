@@ -132,3 +132,5 @@ buildNumber.properties
 # NexClipper
 src/main/java/com/nexcloud/docker/util/Util.java
 
+# 2021.03.30. TUE 정동건 수정
+.DS_Store

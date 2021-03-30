@@ -21,13 +21,14 @@ import com.donggun.tm.service.MatchPostService;
 @Controller
 public class MatchPostController {
 
-	private MatchPostService matchPostService;
+	private final MatchPostService matchPostService;
 	
 	@Autowired
-	public void setMatchPostService(MatchPostService matchPostService) {
+	public MatchPostController(MatchPostService matchPostService) {
 		this.matchPostService = matchPostService;
 	}
-	
+
+
 	/**
 	 * 모든 게시글 조회
 	 * @param param
