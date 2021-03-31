@@ -11,13 +11,13 @@ import com.donggun.tm.dto.Club;
 @Service
 public class ClubServiceImpl implements ClubService {
 
-	private ClubDAO clubDao;
+	private final ClubDAO clubDao;
 	
 	@Autowired
-	public void setDao(ClubDAO clubDao) {
+	public ClubServiceImpl(ClubDAO clubDao) {
 		this.clubDao = clubDao;
 	}
-	
+
 	@Override
 	public List<Club> getClub(String name) throws Exception {
 		return clubDao.searchClub(name);

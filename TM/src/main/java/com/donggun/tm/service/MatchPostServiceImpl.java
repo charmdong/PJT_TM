@@ -14,16 +14,12 @@ import com.donggun.tm.dto.MatchPost;
 @Service
 public class MatchPostServiceImpl implements MatchPostService {
 
-	private MatchPostDAO matchPostDao;
-	private ApplyPostDAO applyPostDao;
+	private final MatchPostDAO matchPostDao;
+	private final ApplyPostDAO applyPostDao;
 	
 	@Autowired
-	public void setMatchPostDao(MatchPostDAO matchPostDao) {
+	public MatchPostServiceImpl(MatchPostDAO matchPostDao, ApplyPostDAO applyPostDao) {
 		this.matchPostDao = matchPostDao;
-	}
-	
-	@Autowired
-	public void setApplyPostDao(ApplyPostDAO applyPostDao) {
 		this.applyPostDao = applyPostDao;
 	}
 

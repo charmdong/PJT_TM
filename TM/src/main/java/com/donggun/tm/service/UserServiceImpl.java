@@ -12,10 +12,10 @@ import com.donggun.tm.exception.TMException;
 @Service
 public class UserServiceImpl implements UserService {
 
-	private UserDAO userDao;
-
+	private final UserDAO userDao;
+	
 	@Autowired
-	public void setUserDao(UserDAO userDao) throws Exception {
+	public UserServiceImpl(UserDAO userDao) {
 		this.userDao = userDao;
 	}
 
