@@ -5,13 +5,13 @@ import java.util.List;
 import com.donggun.tm.dto.User;
 
 public interface UserService {
-	public User getUser(String id) throws Exception;
-	public List<User> getAllUser() throws Exception;
-	public User userLogin(String id, String password) throws Exception;
+	public User getUser(String id);
+	public List<User> getAllUser();
+	public User userLogin(String id, String password);
 	
-	public void insertUser(User user) throws Exception;
+	public void insertUser(User user);
 	
-	public void updateUser(User user) throws Exception;
+	public void updateUser(User user);
 	
-	public void deleteUser(String id) throws Exception;
+	public void deleteUser(String id);
 }

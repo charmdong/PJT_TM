@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(String id) throws Exception {
+	public User getUser(String id) {
 		User user = null;
 
 		try {
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getAllUser() throws Exception {
+	public List<User> getAllUser() {
 		List<User> userList = null;
 
 		try {
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User userLogin(String id, String password) throws Exception {
+	public User userLogin(String id, String password) {
 		User user = null;
 
 		try {
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void insertUser(User user) throws Exception {
+	public void insertUser(User user) {
 		try {
 			userDao.insertUser(user);
 		} catch(Exception e) {
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateUser(User user) throws Exception {
+	public void updateUser(User user) {
 		try {
 			userDao.updateUser(user);
 		} catch(Exception e) {
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(String id) throws Exception {
+	public void deleteUser(String id) {
 		try { 
 			userDao.deleteUser(id);
 		} catch(Exception e) {
