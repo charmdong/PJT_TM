@@ -25,6 +25,12 @@ public class ClubController {
 		this.clubService = clubService;
 	}
 
+	/**
+	 * 클럽 정보 조회 
+	 * @param name
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/search.do")
 	public String getClub(String name, Model model) {
 		System.out.println("#parameter : " + name);
@@ -43,6 +49,11 @@ public class ClubController {
 		return ""; // TODO
 	}
 	
+	/**
+	 * 모든 클럽 정보 조회 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/searchAll.do")
 	public String getAllClub(Model model) {
 		List<Club> clubList = null;
@@ -60,6 +71,12 @@ public class ClubController {
 		return ""; // TODO
 	}
 	
+	/**
+	 * 클럽 정보 등록 
+	 * @param club
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/insert.do")
 	public String insertClub(Club club, Model model) {
 		System.out.println("#parameter : " + club);
@@ -76,6 +93,12 @@ public class ClubController {
 		return "redirect:/";
 	}
 	
+	/**
+	 * 클럽 정보 수정 
+	 * @param club
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/update.do")
 	public String updateClub(Club club, Model model) {
 		System.out.println("#parameter : " + club);
@@ -92,6 +115,12 @@ public class ClubController {
 		return "redirect:/";
 	}
 	
+	/**
+	 * 클럽 정보 삭제 
+	 * @param club_code
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/delete.do")
 	public String deleteClub(int club_code, Model model) {
 		System.out.println("#parameter : " + club_code);

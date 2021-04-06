@@ -25,6 +25,11 @@ public class UserRestController {
 		this.userService = userService;
 	}
 
+	/**
+	 * 사용자 정보 조회 
+	 * @param id
+	 * @return
+	 */
 	@GetMapping(value = "/info/{id}")
 	public User getUserInfo(@PathVariable String id) {
 		User user = null;
@@ -39,6 +44,12 @@ public class UserRestController {
 		return user;
 	}
 	
+	/**
+	 * 사용자 정보 삭제 
+	 * @param id
+	 * @param session
+	 * @return
+	 */
 	@DeleteMapping("/delete/{id}")
 	public int deleteUser(@PathVariable String id, HttpSession session) {
 		int deleteCnt = 0;
