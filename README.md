@@ -29,7 +29,7 @@
 
 <br/>
 
-# 개발 환경
+## 개발 환경
 1. Spring Boot (3.9.12)
 2. Tomcat 8.5
 3. Mysql
