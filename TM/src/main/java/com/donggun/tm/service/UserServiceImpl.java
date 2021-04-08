@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
 		this.userDao = userDao;
 	}
 
+	/**
+	 * 사용자 정보 조회 
+	 * @param id
+	 * @return
+	 */
 	@Override
 	public User getUser(String id) {
 		User user = null;
@@ -32,6 +37,10 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	/**
+	 * 모든 사용자 정보 조회 
+	 * @return
+	 */
 	@Override
 	public List<User> getAllUser() {
 		List<User> userList = null;
@@ -45,6 +54,12 @@ public class UserServiceImpl implements UserService {
 		return userList;
 	}
 
+	/**
+	 * 로그인 
+	 * @param id
+	 * @param password
+	 * @return
+	 */
 	@Override
 	public User userLogin(String id, String password) {
 		User user = null;
@@ -58,6 +73,10 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	/**
+	 * 사용자 정보 등록 
+	 * @param user
+	 */
 	@Override
 	public void insertUser(User user) {
 		try {
@@ -67,6 +86,10 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/**
+	 * 사용자 정보 수정 
+	 * @param user
+	 */
 	@Override
 	public void updateUser(User user) {
 		try {
@@ -76,6 +99,10 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/**
+	 * 사용자 정보 삭제 
+	 * @param id
+	 */
 	@Override
 	public void deleteUser(String id) {
 		try { 
