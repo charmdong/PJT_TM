@@ -9,6 +9,11 @@ import com.donggun.tm.dao.UserDAO;
 import com.donggun.tm.dto.User;
 import com.donggun.tm.exception.TMException;
 
+/**
+ * 사용자 서비스 구현 객체 
+ * @author donggun
+ * @since Apr 8, 2021
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

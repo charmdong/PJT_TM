@@ -9,9 +9,9 @@ import com.donggun.tm.dao.ClubDAO;
 import com.donggun.tm.dto.Club;
 
 /**
+ * 클럽 서비스 구현 객체 
  * @author donggun
  * @since Apr 7, 2021
- * 클럽 서비스 구현 객체 
  */
 @Service
 public class ClubServiceImpl implements ClubService {

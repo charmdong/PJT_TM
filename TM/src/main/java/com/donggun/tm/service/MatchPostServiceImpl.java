@@ -12,9 +12,9 @@ import com.donggun.tm.dto.ApplyPost;
 import com.donggun.tm.dto.MatchPost;
 
 /**
+ * 매치 게시글 서비스 구현 객체 
  * @author donggun
  * @since Apr 7, 2021
- * 매치 게시글 서비스 구현 객체 
  */
 @Service
 public class MatchPostServiceImpl implements MatchPostService {
