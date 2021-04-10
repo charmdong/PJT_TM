@@ -20,6 +20,7 @@
 2. Spring Boot
 3. MySql
 4. MyBatis
+5. JPA
 
 ### Front-end
 1. jsp
