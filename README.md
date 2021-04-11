@@ -24,7 +24,7 @@
 
 ### Front-end
 1. jsp
-2. javascript
+2. javascript, jQuery
 3. HTML5
 4. CSS3
 
